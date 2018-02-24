@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/modules/header::css_library"></head>
+
+<link rel="stylesheet" th:href="@{/plugins/bootstrap-switch/bootstrap-switch.min.css}"/>
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+    <section class="content-header">
+      <h1 style="font-family: 'Microsoft YaHei';">
+        菜单管理
+        <small>Menu Management</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 系统</a></li>
+        <li class="active">综合信息</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <input id="path" type="hidden" th:value="@{/sys}"></input>
+      <!-- Small boxes (Stat box) -->
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-10 col-md-12 connectedSortable">
+
+          <div class="box box-primary">
+            <div class="box-header">
+              <i class="ion ion-clipboard"></i>
+
+              <h3 class="box-title" style="font-family: 'Microsoft YaHei'; ">角色列表</h3>
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+              <table id="treeTable" class="table table-hover ">
+                <tbody>
+                  <thead>
+                    <tr style="background-color: #EEE;">
+                      <th>#</th>
+                      <th>名称</th>
+                      <th>描述</th>
+                      <th>URL</th>
+                      <th>参数</th>
+                      <th>图标</th>
+                      <th>排序值</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <th:block th:each="menu, status : ${menuList}">
+                    <tr th:attr="data-tt-id=${menu.id}, data-tt-parent-id=${menu.belongTo}">
+                      <td th:text="${status.count}">1</td>
+                      <td th:id="${'menu'+menu.id}" th:text="${menu.name}">name</td>
+                      <td th:text="${menu.description}">description</td>
+                      <td th:text="${menu.url}"></td>
+                      <td th:text="${menu.params}"></td>
+                      <td th:text="${menu.icon}"></td>
+                      <td></td>
+                      <td><a href="javascript:void(0);" th:onclick="${'showAddModal('+menu.id+')'}">添加</a>&nbsp;
+                      /&nbsp;<a href="javascript:void(0);" th:onclick="${'showAddModal('+menu.id+')'}">修改</a>&nbsp;
+                      /&nbsp;<a href="javascript:void(0);" th:onclick="'deleteMenu(\''+${menu.id}+'\');'">删除</a></td>
+                    </tr>
+                    <!--<th:block th:if="${#maps.containsKey(userMap, org.ID)}">-->
+                      <!--<th:block th:each="user, status : ${userMap[org.ID]}">-->
+                        <!--<tr th:attr="data-tt-id=${'uid'+user.UID}, data-tt-parent-id=${user.deptID}" >-->
+                          <!--<td><i class="fa fa-user"></i><th:block th:text="${' '+user.name}"></th:block></td>-->
+                          <!--<td></td>-->
+                          <!--<td th:text="${user.userTypeName}">超级管理员</td>-->
+                          <!--<td th:text="${user.EMail}">liangtee@126.com</td>-->
+                          <!--<td th:text="${user.phoneNumber}">13066000000</td>-->
+                          <!--<td th:text="${user.createTime}">2017/5/1</td>-->
+                          <!--<td><a href="javascript:void(0);" th:onclick="${'loadUserInfo('+user.UID+')'}">修改</a> / <a href="javascript:void(0);" th:onclick="${'deleteUser('+user.UID+')'}">删除</a></td>-->
+                          <!--<th:block th:if="${user.isActive()} == true">-->
+                            <!--<td style="color: #00B83F;">启用</td>-->
+                          <!--</th:block>-->
+                          <!--<th:block th:if="${user.isActive()}== false">-->
+                            <!--<td style="color: #aa1111;">禁用</td>-->
+                          <!--</th:block>-->
+                        <!--</tr>-->
+                      <!--</th:block>-->
+                    <!--</th:block>-->
+                  </th:block>
+                </tbody>
+
+              </table>
+              <hr style="border-color: #CCCCCC;"/>
+              <button type="submit" class="btn btn-success pull-left" onclick="showAddModal('root')">添加顶级菜单</button>
+              <div class="box-tools pull-right" style="margin-right: 10px;">
+                <ul class="pagination pagination-sm inline">
+                  <li><a href="#">&laquo;</a></li>
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.box-body -->
+
+          </div>
+          <!-- /.box -->
+
+        </section>
+      </div>
+      <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="addMenuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div id="menuInfo" class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <template v-if="menuID == ''">
+              <h4 class="modal-title" id="myModalLabel" style="font-family: 'Microsoft YaHei';">新增菜单</h4>
+            </template>
+            <template v-else="v-else">
+              <h4 class="modal-title" id="myModalLabel" style="font-family: 'Microsoft YaHei';">修改菜单</h4>
+            </template>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+            <div class="row" style="margin-left:auto; margin-right:auto; width: 80%; ">
+              <div class="col-sm-12 col-md-12" style="float:left;">
+                <form id="vform">
+                <input type="hidden" id="menuID"></input>
+                <div class="form-group" style="margin-top: -6px; margin-left: 8px;">
+                  <label>上级菜单:</label>
+                  <span id="parentMenu"></span><br></br>
+                </div>
+                <div class="form-group" style="margin-top: -10px;">
+                  <label style="color: red;">*</label><label>名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</label>
+                  <input v-model="menuName" name="menuName" type="text" style="width: 50%;"></input><br></br>
+                </div>
+                <div class="form-group" style="margin-top: -10px;">
+                  <label style="color: white;">*</label><label>描&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;述:</label>
+                  <input id="menuDesc" v-model="menuDesc" name="menuDesc" type="text" style="width: 50%;"></input><br></br>
+                </div>
+                <div class="form-group" style="margin-top: -10px;">
+                  <label style="color: red;">*</label><label>URL地址:</label>
+                  <input id="menuUrl" v-model="menuUrl" name="menuUrl" type="text" style="width: 50%;"></input><br></br>
+                </div>
+                <div class="form-group" style="margin-top: -10px;">
+                  <label style="color: white;">*</label><label>参&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数:</label>
+                  <input v-model="params" name="params" type="text" style="width: 50%;"></input><br></br>
+                </div>
+                <div class="form-group" style="margin-top: -10px;">
+                  <label style="color: white;">*</label><label>图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标:</label>
+                  <input v-model="menuIcon" name="menuIcon" type="text" style="width: 50%;"></input><br></br>
+                </div>
+                <div class="form-group" style="margin-top: -10px;">
+                  <label style="color: white;">*</label><label>排&nbsp;&nbsp;序&nbsp;&nbsp;值:</label>
+                  <input v-model="menuWeight" name="menuWeight" type="text" style="width: 50%;"></input><br></br>
+                </div>
+
+                <span style="color: red;">*项为必填项目</span>
+                </form>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <template v-if="menuID == ''">
+              <button type="button" class="btn btn-primary" v-on:click="add">保&nbsp;&nbsp;存</button>
+            </template>
+            <template v-else="v-else">
+              <button type="button" class="btn btn-primary" v-on:click="update">修&nbsp;&nbsp;改</button>
+            </template>
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div th:replace="/modules/bottom::js_library"></div>
+
+<script th:src="@{/plugins/bootstrap-switch/bootstrap-switch.min.js}"></script>
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+
+    function deleteMenu(menuID) {
+        var path = $("#path").val();
+        if(window.confirm("确定删除该菜单?")){
+            $.ajax({
+                type: "POST",
+                url: path + "/menus/delete",
+                data: {menuID: menuID},
+                success: function(result) {
+                    var res = eval(result)
+                    alert(res["message"]);
+                    window.location.reload();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        }
+        return;
+    }
+
+    function showAddModal(orgID) {
+        $("#addMenuModal").modal("show");
+//        $("#orgID").val(orgID);
+//        $("#n-orgname").html($("#orgname"+orgID).html());
+
+    }
+
+    jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+    });
+
+    jQuery.validator.addMethod("isPhone", function(value, element) {
+        var length = value.length;
+        var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+        return this.optional(element) || mobile.test(value);
+
+    }, "请正确填写您的联系电话(手机)");
+
+
+    var menu = new Vue({
+        el: '#menuInfo',
+        data: {
+            menuID: '',
+            menuName: '',
+            menuDesc: '',
+            menuUrl: '',
+            params: '',
+            menuIcon: '',
+            menuWeight: ''
+        },
+        methods: {
+            validate: function () {
+                var errorSymbol = "<span style='color: red; font-size: 18px;'>&nbsp;x</span>";
+                var vform = $("#vform");
+            },
+            add: function () {
+                var url = $('#path').val() + '/menus/add';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {menuName: this.menuName, menuDesc: this.menuDesc, menuUrl: this.menuUrl, params: this.params, menuIcon: this.menuIcon, menuWeight: this.menuWeight},
+                    success: function(result) {
+                        var res = eval(result)
+                        alert(res["message"]);
+                        window.location.reload();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                });
+            },
+
+            update: function () {
+                
+            }
+        }
+
+    });
+
+//    var userInfo = new Vue({
+//        el: '#userInfo',
+//        data: {
+//            userName: '',
+//            roleCode: '',
+//            passwd: '',
+//            confirm_passwd: '',
+//            userTel: '',
+//            userMail: '',
+//            orgID: '',
+//            isActive: true
+//        },
+//        methods: {
+//            validate: function () {
+//                var errorSymbol = "<span style='color: red; font-size: 18px;'>&nbsp;x</span>";
+//                var vform = $("#vform");
+//                vform.validate({
+//                    rules: {
+//                        userName: {
+//                            required: true,
+//                            minlength: 6
+//                        },
+//                        passwd: {
+//                            required: true,
+//                            minlength: 8
+//                        },
+//                        confirm_passwd: {
+//                            required: true,
+//                        },
+//                        roleCode: {
+//                            required: true
+//                        },
+//                        userTel: {
+//                            required: true,
+//                            isPhone: true
+//                        },
+//                        userMail:{
+//                            required: true,
+//                            email: true
+//                        }
+//                    },
+//                    messages: {
+//                        userName: {
+//                            required: errorSymbol,
+//                            minlength: "<span style='color: red; font-size: 14px;'>&nbsp;用户名长度不能少于6位</span>"
+//                        },
+//                        passwd: {
+//                            required: errorSymbol,
+//                            minlength: "<span style='color: red; font-size: 14px;'>&nbsp;密码长度不能少于8位</span>"
+//                        },
+//                        confirm_passwd: {
+//                            required: true,
+//                            minlength: "<span style='color: red; font-size: 14px;'>&nbsp;密码长度不能少于8位</span>",
+////                            equalTo: "<span style='color: red; font-size: 14px;'>&nbsp;两次输入密码不一致</span>"
+//                        },
+//                        roleCode: {
+//                            required: errorSymbol
+//                        },
+//                        userTel: {
+//                            required: errorSymbol,
+//                            isPhone: "<span style='color: red; font-size: 14px;'>&nbsp;手机号输入有误</span>"
+//                        },
+//                        userMail: {
+//                            required: errorSymbol,
+//                            email: "<span style='color: red; font-size: 14px;'>&nbsp;邮箱输入有误</span>"
+//                        }
+//                    }
+//                });
+//                return vform;
+//            },
+//            add: function () {
+//                if(this.validate().valid() == false) {
+//                    alert('数据项录入有误, 请按照提示修改');
+//                    return;
+//                }
+//                var url = $('#path').val() + '/users/add';
+//                var orgID = $('#orgID').val();
+//
+//                $.ajax({
+//                    type: "POST",
+//                    url: url,
+//                    data: {orgID: orgID, userName: this.userName, roleCode: this.roleCode, passwd: this.passwd, userTel: this.userTel, userMail: this.userMail, isActive: this.isActive},
+//                    success: function(result) {
+//                        var res = eval(result)
+//                        alert(res["message"]);
+//                        window.location.reload();
+//                    },
+//                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                        alert(errorThrown);
+//                    }
+//                });
+//            },
+//            update: function () {
+//                if(this.validate().valid() == false) {
+//                    alert('数据项录入有误, 请按照提示修改');
+//                    return;
+//                }
+//                var url = $('#path').val() + '/users/update';
+//                var orgID = $('#orgID').val();
+//
+//                $.ajax({
+//                    type: "POST",
+//                    url: url,
+//                    data: {userID: this.userID, orgID: orgID, userName: this.userName, roleCode: this.roleCode, passwd: this.passwd, userTel: this.userTel, userMail: this.userMail, isActive: this.isActive},
+//                    success: function(result) {
+//                        var res = eval(result)
+//                        alert(res["message"]);
+//                        window.location.reload();
+//                    },
+//                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                        alert(errorThrown);
+//                    }
+//                });
+//            }
+//        }
+//    });
+//
+//    function loadUserInfo(userID) {
+//        var url = $('#path').val() + '/users/get'
+//        $.ajax({
+//            type: "POST",
+//            url: url,
+//            data: {userID: userID},
+//            success: function(result) {
+//                var user = eval(result);
+//                userInfo.userName = user.name;
+//                userInfo.passwd = user.passwd;
+//                userInfo.confirm_passwd = user.passwd;
+//                userInfo.roleCode = user.userType;
+//                userInfo.userTel = user.phoneNumber;
+//                userInfo.userMail = user.eMail;
+//                userInfo.orgID = user.deptID;
+//                userInfo.isActive = user.active;
+//                userInfo.userID = user.uID;
+//                $('#orgID').val(user.deptID);
+//
+//                if(userInfo.isActive == false) {
+//                    $("[name='my-checkbox']").bootstrapSwitch('state', false, false);
+//                }
+//
+//                showAddModal(userInfo.orgID);
+//            },
+//            error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                alert(errorThrown);
+//            }
+//        });
+//    }
+//
+//  $('#addUserModal').on('hidden.bs.modal', function () {
+//      clearForm($('#vform'));
+//      $('#vform').validate().resetForm();
+//      $("[name='my-checkbox']").bootstrapSwitch('state', true, true);
+//  });
+//
+//  function clearForm(form) {
+//      // input清空
+//      $(':input', form).each(function () {
+//          var type = this.type;
+//          var tag = this.tagName.toLowerCase(); // normalize case
+//          if (type == 'text' || type == 'password' || tag == 'textarea')
+//              this.value = "";
+//          // 多选checkboxes清空
+//          // select 下拉框清空
+//          else if (tag == 'select')
+//              this.selectedIndex = -1;
+//      });
+//  };
+
+    $("#treeTable").treetable({
+        expandable: true,
+        initialState: 'expanded'
+    });
+
+    // Highlight selected row
+    $("#treeTable tbody").on("mousedown", "tr", function() {
+        $(".selected").not(this).removeClass("selected");
+        $(this).toggleClass("selected");
+    });
+
+    $("[name='my-checkbox']").bootstrapSwitch();
+    $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
+        userInfo.isActive = state;
+    });
+
+  /*]]>*/
+</script>
+
+</body>
+</html>
