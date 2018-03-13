@@ -1,10 +1,10 @@
-package com.liangtee.jsuperlite.auditsys.service;
+package com.liangtee.jsuperlite.core.service;
 
-import com.liangtee.jsuperlite.auditsys.model.Organization;
-import com.liangtee.jsuperlite.auditsys.repository.OrgRepository;
-import com.liangtee.jsuperlite.auditsys.service.base.BaseService;
-import com.liangtee.jsuperlite.auditsys.service.base.QueryHelper;
-import com.liangtee.jsuperlite.auditsys.values.OrgConfs;
+import com.liangtee.jsuperlite.core.model.Organization;
+import com.liangtee.jsuperlite.core.repository.OrgRepository;
+import com.liangtee.jsuperlite.core.service.base.BaseService;
+import com.liangtee.jsuperlite.core.service.base.QueryHelper;
+import com.liangtee.jsuperlite.core.values.OrgConfs;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;

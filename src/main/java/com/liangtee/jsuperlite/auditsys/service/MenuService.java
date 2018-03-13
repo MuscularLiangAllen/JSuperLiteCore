@@ -1,8 +1,8 @@
-package com.liangtee.jsuperlite.auditsys.service;
+package com.liangtee.jsuperlite.core.service;
 
-import com.liangtee.jsuperlite.auditsys.model.Menu;
-import com.liangtee.jsuperlite.auditsys.repository.MenuRepository;
-import com.liangtee.jsuperlite.auditsys.service.base.BaseService;
+import com.liangtee.jsuperlite.core.model.Menu;
+import com.liangtee.jsuperlite.core.repository.MenuRepository;
+import com.liangtee.jsuperlite.core.service.base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;

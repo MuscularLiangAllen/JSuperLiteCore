@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.init;
+package com.liangtee.jsuperlite.core.init;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

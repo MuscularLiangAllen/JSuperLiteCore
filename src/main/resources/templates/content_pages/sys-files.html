@@ -136,7 +136,7 @@
                       last: '<li class="last"><a href="javascript:void(0);">末页</a></li>',
                       page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
                       onPageChange: function (page, type) {
-//                          $.get("/auditsys/files/show?pageNumber="+page);
+//                          $.get("/core/files/show?pageNumber="+page);
                           if(type == "init") return;
                           $('#mainContentFrame', parent.document).attr('src', '/tsys/files/show?pageNumber='+page);
                       }

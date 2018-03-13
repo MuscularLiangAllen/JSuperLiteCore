@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.utils.wordtemplate;
+package com.liangtee.jsuperlite.core.utils.wordtemplate;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,8 +6,8 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
-import com.liangtee.jsuperlite.auditsys.utils.wordtemplate.XWPFHandler.XWPFParagraphHandler;
-import com.liangtee.jsuperlite.auditsys.utils.wordtemplate.XWPFHandler.XWPFTableHandler;
+import com.liangtee.jsuperlite.core.utils.wordtemplate.XWPFHandler.XWPFParagraphHandler;
+import com.liangtee.jsuperlite.core.utils.wordtemplate.XWPFHandler.XWPFTableHandler;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFTable;

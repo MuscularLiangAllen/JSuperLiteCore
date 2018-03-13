@@ -1,10 +1,10 @@
-package com.liangtee.jsuperlite.auditsys.AOP;
+package com.liangtee.jsuperlite.core.AOP;
 
-import com.liangtee.jsuperlite.auditsys.model.Menu;
-import com.liangtee.jsuperlite.auditsys.model.Organization;
-import com.liangtee.jsuperlite.auditsys.service.MenuService;
-import com.liangtee.jsuperlite.auditsys.service.OrganizationService;
-import com.liangtee.jsuperlite.auditsys.utils.TimeFormater;
+import com.liangtee.jsuperlite.core.model.Menu;
+import com.liangtee.jsuperlite.core.model.Organization;
+import com.liangtee.jsuperlite.core.service.MenuService;
+import com.liangtee.jsuperlite.core.service.OrganizationService;
+import com.liangtee.jsuperlite.core.utils.TimeFormater;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -34,12 +34,12 @@ public class ControllerAspect {
     @Autowired
     private MenuService menuService;
 
-    @Pointcut("execution(* com.liangtee.jsuperlite.auditsys.web.internal.sys.UserController.show(..)) || " +
-            "execution(* com.liangtee.jsuperlite.auditsys.web.internal.sys.UserController.getUserJsonList(..)) || " +
-            "execution(* com.liangtee.jsuperlite.auditsys.web.internal.sys.OrganizationController.getOrgJsonList(..))")
+    @Pointcut("execution(* com.liangtee.jsuperlite.core.web.internal.sys.UserController.show(..)) || " +
+            "execution(* com.liangtee.jsuperlite.core.web.internal.sys.UserController.getUserJsonList(..)) || " +
+            "execution(* com.liangtee.jsuperlite.core.web.internal.sys.OrganizationController.getOrgJsonList(..))")
     public void loadOrganizationInfo() {}
 
-    @Pointcut("execution(* com.liangtee.jsuperlite.auditsys.web.internal.*.*.*(..))")
+    @Pointcut("execution(* com.liangtee.jsuperlite.core.web.internal.*.*.*(..))")
     public void loadMenuList() {}
 
     @Around("loadOrganizationInfo()")

@@ -1,6 +1,6 @@
-package com.liangtee.jsuperlite.auditsys.model;
+package com.liangtee.jsuperlite.core.model;
 
-import com.liangtee.jsuperlite.auditsys.utils.TimeFormater;
+import com.liangtee.jsuperlite.core.utils.TimeFormater;
 import org.springframework.data.annotation.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;

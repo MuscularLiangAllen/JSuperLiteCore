@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.web;
+package com.liangtee.jsuperlite.core.web;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -8,11 +8,11 @@ import com.github.bingoohuang.patchca.filter.predefined.CurvesRippleFilterFactor
 import com.github.bingoohuang.patchca.font.RandomFontFactory;
 import com.github.bingoohuang.patchca.utils.encoder.EncoderHelper;
 import com.github.bingoohuang.patchca.word.RandomWordFactory;
-import com.liangtee.jsuperlite.auditsys.model.User;
-import com.liangtee.jsuperlite.auditsys.service.UserService;
-import com.liangtee.jsuperlite.auditsys.utils.InjectionFilter;
-import com.liangtee.jsuperlite.auditsys.utils.MD5Encoder;
-import com.liangtee.jsuperlite.auditsys.values.json.ReturnMessage;
+import com.liangtee.jsuperlite.core.model.User;
+import com.liangtee.jsuperlite.core.service.UserService;
+import com.liangtee.jsuperlite.core.utils.InjectionFilter;
+import com.liangtee.jsuperlite.core.utils.MD5Encoder;
+import com.liangtee.jsuperlite.core.values.json.ReturnMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;

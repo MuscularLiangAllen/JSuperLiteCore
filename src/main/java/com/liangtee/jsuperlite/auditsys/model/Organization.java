@@ -1,8 +1,8 @@
-package com.liangtee.jsuperlite.auditsys.model;
+package com.liangtee.jsuperlite.core.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.liangtee.jsuperlite.auditsys.utils.TimeFormater;
-import com.liangtee.jsuperlite.auditsys.values.OrgConfs;
+import com.liangtee.jsuperlite.core.utils.TimeFormater;
+import com.liangtee.jsuperlite.core.values.OrgConfs;
 
 import javax.persistence.*;
 

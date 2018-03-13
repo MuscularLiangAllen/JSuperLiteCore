@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.values.json;
+package com.liangtee.jsuperlite.core.values.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;

@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.utils;
+package com.liangtee.jsuperlite.core.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

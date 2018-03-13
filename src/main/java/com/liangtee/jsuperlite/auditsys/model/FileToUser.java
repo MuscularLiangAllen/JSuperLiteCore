@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.model;
+package com.liangtee.jsuperlite.core.model;
 
 import javax.persistence.*;
 

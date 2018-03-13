@@ -1,15 +1,15 @@
-package com.liangtee.jsuperlite.auditsys.web.internal.sys;
+package com.liangtee.jsuperlite.core.web.internal.sys;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.liangtee.jsuperlite.auditsys.Annotation.PermissionValidate;
-import com.liangtee.jsuperlite.auditsys.model.Menu;
-import com.liangtee.jsuperlite.auditsys.model.User;
-import com.liangtee.jsuperlite.auditsys.service.MenuService;
-import com.liangtee.jsuperlite.auditsys.service.base.PageModel;
-import com.liangtee.jsuperlite.auditsys.utils.InjectionFilter;
-import com.liangtee.jsuperlite.auditsys.values.json.ReturnMessage;
+import com.liangtee.jsuperlite.core.Annotation.PermissionValidate;
+import com.liangtee.jsuperlite.core.model.Menu;
+import com.liangtee.jsuperlite.core.model.User;
+import com.liangtee.jsuperlite.core.service.MenuService;
+import com.liangtee.jsuperlite.core.service.base.PageModel;
+import com.liangtee.jsuperlite.core.utils.InjectionFilter;
+import com.liangtee.jsuperlite.core.values.json.ReturnMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

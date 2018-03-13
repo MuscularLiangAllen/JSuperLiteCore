@@ -1,8 +1,8 @@
-package com.liangtee.jsuperlite.auditsys;
+package com.liangtee.jsuperlite.core;
 
-import com.liangtee.jsuperlite.auditsys.utils.HTML2PDF;
-import com.liangtee.jsuperlite.auditsys.utils.Office2HTML;
-import com.liangtee.jsuperlite.auditsys.utils.PDFUtils;
+import com.liangtee.jsuperlite.core.utils.HTML2PDF;
+import com.liangtee.jsuperlite.core.utils.Office2HTML;
+import com.liangtee.jsuperlite.core.utils.PDFUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,11 +1,11 @@
-package com.liangtee.jsuperlite.auditsys.service;
+package com.liangtee.jsuperlite.core.service;
 
-import com.liangtee.jsuperlite.auditsys.model.Role;
-import com.liangtee.jsuperlite.auditsys.model.User;
-import com.liangtee.jsuperlite.auditsys.repository.UserRepository;
-import com.liangtee.jsuperlite.auditsys.service.base.BaseService;
-import com.liangtee.jsuperlite.auditsys.service.base.QueryHelper;
-import com.liangtee.jsuperlite.auditsys.utils.MD5Encoder;
+import com.liangtee.jsuperlite.core.model.Role;
+import com.liangtee.jsuperlite.core.model.User;
+import com.liangtee.jsuperlite.core.repository.UserRepository;
+import com.liangtee.jsuperlite.core.service.base.BaseService;
+import com.liangtee.jsuperlite.core.service.base.QueryHelper;
+import com.liangtee.jsuperlite.core.utils.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys;
+package com.liangtee.jsuperlite.core;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;

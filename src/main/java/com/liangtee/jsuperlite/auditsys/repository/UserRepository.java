@@ -1,6 +1,6 @@
-package com.liangtee.jsuperlite.auditsys.repository;
+package com.liangtee.jsuperlite.core.repository;
 
-import com.liangtee.jsuperlite.auditsys.model.User;
+import com.liangtee.jsuperlite.core.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 

@@ -1,18 +1,18 @@
-package com.liangtee.jsuperlite.auditsys.AOP;
+package com.liangtee.jsuperlite.core.AOP;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSON;
-import com.liangtee.jsuperlite.auditsys.Annotation.AccessControl;
-import com.liangtee.jsuperlite.auditsys.Annotation.AccessControlJson;
-import com.liangtee.jsuperlite.auditsys.Annotation.PermissionValidate;
-import com.liangtee.jsuperlite.auditsys.model.Menu;
-import com.liangtee.jsuperlite.auditsys.model.Role;
-import com.liangtee.jsuperlite.auditsys.model.User;
-import com.liangtee.jsuperlite.auditsys.service.MenuService;
-import com.liangtee.jsuperlite.auditsys.service.RoleService;
-import com.liangtee.jsuperlite.auditsys.utils.TimeFormater;
-import com.liangtee.jsuperlite.auditsys.values.json.ReturnMessage;
+import com.liangtee.jsuperlite.core.Annotation.AccessControl;
+import com.liangtee.jsuperlite.core.Annotation.AccessControlJson;
+import com.liangtee.jsuperlite.core.Annotation.PermissionValidate;
+import com.liangtee.jsuperlite.core.model.Menu;
+import com.liangtee.jsuperlite.core.model.Role;
+import com.liangtee.jsuperlite.core.model.User;
+import com.liangtee.jsuperlite.core.service.MenuService;
+import com.liangtee.jsuperlite.core.service.RoleService;
+import com.liangtee.jsuperlite.core.utils.TimeFormater;
+import com.liangtee.jsuperlite.core.values.json.ReturnMessage;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -38,18 +38,18 @@ public class PermissionAspect {
 	@Autowired
 	private MenuService menuService;
 
-	@Pointcut("execution(* com.liangtee.jsuperlite.auditsys.web.internal.sys.*.*(..))")
+	@Pointcut("execution(* com.liangtee.jsuperlite.core.web.internal.sys.*.*(..))")
 	public void isLogin() {}
 
 	@Deprecated
-	@Pointcut("@annotation(com.liangtee.jsuperlite.auditsys.Annotation.AccessControl)")
+	@Pointcut("@annotation(com.liangtee.jsuperlite.core.Annotation.AccessControl)")
 	public void accessControl() {}
 
 	@Deprecated
-	@Pointcut("@annotation(com.liangtee.jsuperlite.auditsys.Annotation.AccessControlJson)")
+	@Pointcut("@annotation(com.liangtee.jsuperlite.core.Annotation.AccessControlJson)")
 	public void accessControlJson() {}
 
-	@Pointcut("@annotation(com.liangtee.jsuperlite.auditsys.Annotation.PermissionValidate)")
+	@Pointcut("@annotation(com.liangtee.jsuperlite.core.Annotation.PermissionValidate)")
 	public void permissionValidate() {}
 
 	@Around("isLogin()")

@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.Annotation;
+package com.liangtee.jsuperlite.core.Annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.values;
+package com.liangtee.jsuperlite.core.values;
 
 import javax.persistence.Transient;
 

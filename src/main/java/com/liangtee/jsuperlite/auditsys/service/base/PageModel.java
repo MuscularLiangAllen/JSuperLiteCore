@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.service.base;
+package com.liangtee.jsuperlite.core.service.base;
 
 /**
  * Author: LIANG Tianyi

@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.repository.base;
+package com.liangtee.jsuperlite.core.repository.base;
 
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.data.repository.CrudRepository;

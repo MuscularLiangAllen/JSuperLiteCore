@@ -1,9 +1,9 @@
-package com.liangtee.jsuperlite.auditsys.model;
+package com.liangtee.jsuperlite.core.model;
 
 import javax.persistence.*;
 
-import com.liangtee.jsuperlite.auditsys.utils.TimeFormater;
-import com.liangtee.jsuperlite.auditsys.values.UserConfs;
+import com.liangtee.jsuperlite.core.utils.TimeFormater;
+import com.liangtee.jsuperlite.core.values.UserConfs;
 
 /**
  * author: liangtee 梁天一

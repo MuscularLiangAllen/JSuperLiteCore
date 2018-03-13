@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.service.base;
+package com.liangtee.jsuperlite.core.service.base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

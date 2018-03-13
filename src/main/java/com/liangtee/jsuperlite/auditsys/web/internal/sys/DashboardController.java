@@ -1,7 +1,7 @@
-package com.liangtee.jsuperlite.auditsys.web.internal.sys;
+package com.liangtee.jsuperlite.core.web.internal.sys;
 
-import com.liangtee.jsuperlite.auditsys.Annotation.AccessControl;
-import com.liangtee.jsuperlite.auditsys.model.User;
+import com.liangtee.jsuperlite.core.Annotation.AccessControl;
+import com.liangtee.jsuperlite.core.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

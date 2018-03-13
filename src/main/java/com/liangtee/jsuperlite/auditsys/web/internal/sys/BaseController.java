@@ -1,6 +1,6 @@
-package com.liangtee.jsuperlite.auditsys.web.internal.sys;
+package com.liangtee.jsuperlite.core.web.internal.sys;
 
-import com.liangtee.jsuperlite.auditsys.model.User;
+import com.liangtee.jsuperlite.core.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

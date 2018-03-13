@@ -1,4 +1,4 @@
-package com.liangtee.jsuperlite.auditsys.utils.wordtemplate.XWPFHandler;
+package com.liangtee.jsuperlite.core.utils.wordtemplate.XWPFHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;

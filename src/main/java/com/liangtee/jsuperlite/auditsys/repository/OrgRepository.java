@@ -1,6 +1,6 @@
-package com.liangtee.jsuperlite.auditsys.repository;
+package com.liangtee.jsuperlite.core.repository;
 
-import com.liangtee.jsuperlite.auditsys.model.Organization;
+import com.liangtee.jsuperlite.core.model.Organization;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.persistence.Cacheable;
